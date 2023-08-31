@@ -9,6 +9,11 @@ def list_images(basePath, contains=None):
     return list_files(basePath, validExts=image_types, contains=contains)
 
 
+def dict_images(basePath, contains=None):
+    enum = enumerate(list_files(basePath, validExts = image_types, contains = contains))
+    return {idx : path for idx, path in enum}
+
+
 def list_files(basePath, validExts=None, contains=None):
     # loop over the directory structure
     for (rootDir, dirNames, filenames) in os.walk(basePath):
